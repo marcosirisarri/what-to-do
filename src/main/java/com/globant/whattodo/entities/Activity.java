@@ -47,4 +47,44 @@ public class Activity {
 		this.name = name;
 		this.dateAndTime = dateAndTime;
 	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public Date getDateAndTime() {
+		return dateAndTime;
+	}
+
+	public Integer getMaximumParticipants() {
+		return maximumParticipants;
+	}
+
+	public String getBase64Image() {
+		return base64Image;
+	}
+
+	public Location getLocation() {
+		return location;
+	}
+
+	public User getCreator() {
+		return creator;
+	}
+
+	public List<User> getParticipants() {
+		return participants;
+	}
+
+	public List<Comment> getComments() {
+		return comments;
+	}
 }

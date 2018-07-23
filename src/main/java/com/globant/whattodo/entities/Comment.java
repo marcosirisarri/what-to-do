@@ -19,4 +19,13 @@ public class Comment {
 	public Comment(String content) {
 		this.content = content;
 	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
 }

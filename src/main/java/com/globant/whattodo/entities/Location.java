@@ -26,4 +26,21 @@ public class Location {
 		this.latitude = latitude;
 		this.longitude = longitude;
 	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public BigDecimal getLatitude() {
+		return latitude;
+	}
+
+	public BigDecimal getLongitude() {
+		return longitude;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
 }
