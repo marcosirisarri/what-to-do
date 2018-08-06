@@ -4,7 +4,6 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import com.globant.whattodo.entities.User;
 import com.globant.whattodo.repository.UsersRepository;
@@ -19,8 +18,11 @@ public class UsersBusinessLogic {
 		this.usersRepository = usersRepo;
 	}
 
-	@GetMapping
 	public Collection<User> getAllUsers() {
 		return usersRepository.findAll();
+	}
+
+	public void addUser(User newUser) {
+		usersRepository.save(newUser);
 	}
 }

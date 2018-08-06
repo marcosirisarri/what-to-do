@@ -4,6 +4,8 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,5 +26,12 @@ public class UsersController {
 	@GetMapping(produces = "application/json")
 	public Collection<User> getAllUsers() {
 		return this.usersBusinessLogic.getAllUsers();
+	}
+
+	@PostMapping(consumes = "application/json")
+	public User addUser(@RequestBody User newUser) {
+		System.out.println(newUser);
+		this.usersBusinessLogic.addUser(newUser);
+		return newUser;
 	}
 }
