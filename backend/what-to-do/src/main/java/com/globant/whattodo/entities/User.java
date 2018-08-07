@@ -1,11 +1,15 @@
 package com.globant.whattodo.entities;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -16,13 +20,16 @@ public class User {
 	@GeneratedValue
 	private Long id;
 
+	@Column(unique = true)
 	private String email;
 
 	@JsonIgnore
 	private String password;
 
+	@NotNull
 	private String firstName;
 
+	@NotNull
 	private String lastName;
 
 	private Date birthDate;
@@ -31,6 +38,10 @@ public class User {
 
 	@Column(length = Integer.MAX_VALUE)
 	private String base64Image;
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "creator")
+	private Collection<Activity> activities = new ArrayList<Activity>();
 
 	private User() {
 	} // JPA only
