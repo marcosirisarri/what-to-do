@@ -63,24 +63,48 @@ public class User {
 		return password;
 	}
 
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	public String getFirstName() {
 		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
 	public String getLastName() {
 		return lastName;
 	}
 
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
 	public Date getBirthDate() {
 		return birthDate;
+	}
+
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
 	}
 
 	public String getBiography() {
 		return biography;
 	}
 
+	public void setBiography(String biography) {
+		this.biography = biography;
+	}
+
 	public String getBase64Image() {
 		return base64Image;
+	}
+
+	public void setBase64Image(String base64Image) {
+		this.base64Image = base64Image;
 	}
 
 	@Override
@@ -88,5 +112,4 @@ public class User {
 		return "User [email=" + email + ", firstName=" + firstName + ", lastName=" + lastName + ", birthDate="
 				+ birthDate + ", biography=" + biography + "]";
 	}
-
 }
