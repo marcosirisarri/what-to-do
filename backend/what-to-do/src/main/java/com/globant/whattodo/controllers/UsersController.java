@@ -50,11 +50,7 @@ public class UsersController {
 
 	@PutMapping("/{email}")
 	public ResponseEntity<?> updateUser(@PathVariable String email, @RequestBody User updatedUser) {
-		User result = this.usersBusinessLogic.updateUser(email, updatedUser);
-
-		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{email}")
-				.buildAndExpand(result.getEmail()).toUri();
-
-		return ResponseEntity.created(location).build();
+		this.usersBusinessLogic.updateUser(email, updatedUser);
+		return ResponseEntity.noContent().build();
 	}
 }

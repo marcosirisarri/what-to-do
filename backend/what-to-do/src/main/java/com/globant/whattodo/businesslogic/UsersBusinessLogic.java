@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import com.globant.whattodo.businesslogic.exceptions.RequiredFieldMissingException;
 import com.globant.whattodo.businesslogic.exceptions.UserEmailAlreadyRegisteredException;
 import com.globant.whattodo.businesslogic.exceptions.UserNotFoundException;
 import com.globant.whattodo.entities.User;
@@ -66,6 +67,18 @@ public class UsersBusinessLogic {
 
 	private void validateUser(User user) {
 		String email = user.getEmail();
+		String firstName = user.getFirstName();
+		String lastName = user.getLastName();
+
+		if (StringUtils.isEmpty(email)) {
+			throw new RequiredFieldMissingException("email");
+		}
+		if (StringUtils.isEmpty(firstName)) {
+			throw new RequiredFieldMissingException("firstName");
+		}
+		if (StringUtils.isEmpty(lastName)) {
+			throw new RequiredFieldMissingException("lastName");
+		}
 		if (this.usersRepository.findByEmail(email).isPresent()) {
 			throw new UserEmailAlreadyRegisteredException(email);
 		}
