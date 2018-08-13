@@ -62,7 +62,7 @@ public class UsersBusinessLogic {
 		if (!StringUtils.isEmpty(updatedBase64Image)) {
 			originalUser.setBase64Image(updatedBase64Image);
 		}
-		return this.usersRepository.save(updatedUser);
+		return this.usersRepository.save(originalUser);
 	}
 
 	private void validateUser(User user) {

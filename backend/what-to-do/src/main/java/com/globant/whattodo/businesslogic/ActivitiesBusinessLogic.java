@@ -83,7 +83,7 @@ public class ActivitiesBusinessLogic {
 			validateLocation(updatedLocation);
 			originalActivity.setLocation(updatedLocation);
 		}
-		return this.activitiesRepository.save(updatedActivity);
+		return this.activitiesRepository.save(originalActivity);
 	}
 
 	public void deleteActivity(Long id) {

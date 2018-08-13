@@ -37,7 +37,7 @@ public class Activity {
 	@Column(length = Integer.MAX_VALUE)
 	private String base64Image;
 
-	@OneToOne(fetch = FetchType.EAGER)
+	@OneToOne
 	@NotNull
 	private Location location;
 
