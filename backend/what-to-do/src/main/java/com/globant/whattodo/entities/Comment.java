@@ -3,6 +3,10 @@ package com.globant.whattodo.entities;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Comment {
@@ -12,6 +16,11 @@ public class Comment {
 	private Long id;
 
 	private String content;
+
+	@ManyToOne
+	@NotNull
+	@JsonIgnore
+	private Activity activity;
 
 	private Comment() {
 	} // JPA only
@@ -28,4 +37,11 @@ public class Comment {
 		return content;
 	}
 
+	public Activity getActivity() {
+		return activity;
+	}
+
+	public void setActivity(Activity activity) {
+		this.activity = activity;
+	}
 }

@@ -48,7 +48,7 @@ public class Activity {
 	@ManyToMany
 	private List<User> participants;
 
-	@OneToMany
+	@OneToMany(mappedBy = "activity", fetch = FetchType.LAZY)
 	private List<Comment> comments;
 
 	private Activity() { // JPA only
