@@ -17,10 +17,14 @@ public class Comment {
 
 	private String content;
 
+	@JsonIgnore
 	@ManyToOne
 	@NotNull
-	@JsonIgnore
 	private Activity activity;
+
+	@ManyToOne
+	@NotNull
+	private User author;
 
 	private Comment() {
 	} // JPA only
@@ -44,4 +48,13 @@ public class Comment {
 	public void setActivity(Activity activity) {
 		this.activity = activity;
 	}
+
+	public User getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(User author) {
+		this.author = author;
+	}
+
 }
