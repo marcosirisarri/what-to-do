@@ -126,4 +126,16 @@ public class Activity {
 	public List<Comment> getComments() {
 		return comments;
 	}
+
+	public void addParticipant(User participant) {
+		if (participants.contains(participant)) {
+			throw new IllegalArgumentException(
+					"Participant " + participant.getEmail() + " already on activity " + this.getId());
+		}
+		this.participants.add(participant);
+	}
+
+	public void removeParticipant(User participant) {
+		this.participants.remove(participant);
+	}
 }

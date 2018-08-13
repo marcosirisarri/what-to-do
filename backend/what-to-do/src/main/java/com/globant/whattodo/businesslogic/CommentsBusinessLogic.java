@@ -24,7 +24,7 @@ public class CommentsBusinessLogic {
 	private final UsersRepository usersRepository;
 
 	@Autowired
-	public CommentsBusinessLogic(CommentsRepository commentsRepo, ActivitiesRepository activitiesRepo,
+	public CommentsBusinessLogic(ActivitiesRepository activitiesRepo, CommentsRepository commentsRepo,
 			UsersRepository usersRepo) {
 		this.activitiesRepository = activitiesRepo;
 		this.commentsRepository = commentsRepo;

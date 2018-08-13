@@ -81,6 +81,7 @@ public class ActivitiesBusinessLogic {
 		}
 		if (updatedLocation != null) {
 			validateLocation(updatedLocation);
+			locationsRepository.save(updatedLocation);
 			originalActivity.setLocation(updatedLocation);
 		}
 		return this.activitiesRepository.save(originalActivity);
