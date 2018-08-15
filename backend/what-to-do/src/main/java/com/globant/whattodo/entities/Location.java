@@ -2,6 +2,7 @@ package com.globant.whattodo.entities;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,8 +14,10 @@ public class Location {
 	@GeneratedValue
 	private Long id;
 
+	@Column(nullable = false)
 	private BigDecimal latitude;
 
+	@Column(nullable = false)
 	private BigDecimal longitude;
 
 	private String address;
@@ -42,5 +45,4 @@ public class Location {
 	public String getAddress() {
 		return address;
 	}
-
 }

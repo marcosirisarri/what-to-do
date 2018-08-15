@@ -1,7 +1,7 @@
 package com.globant.whattodo.businesslogic;
 
+import java.time.LocalDate;
 import java.util.Collection;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,7 +41,7 @@ public class UsersBusinessLogic {
 		String updatedPassword = updatedUser.getPassword();
 		String updatedFirstName = updatedUser.getFirstName();
 		String updatedLastName = updatedUser.getLastName();
-		Date updatedBirthDate = updatedUser.getBirthDate();
+		LocalDate updatedBirthDate = updatedUser.getBirthDate();
 		String updatedBiography = updatedUser.getBiography();
 		String updatedBase64Image = updatedUser.getBase64Image();
 		if (!StringUtils.isEmpty(updatedPassword)) {

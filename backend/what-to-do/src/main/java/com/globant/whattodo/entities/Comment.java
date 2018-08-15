@@ -1,12 +1,10 @@
 package com.globant.whattodo.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Comment {
@@ -17,13 +15,12 @@ public class Comment {
 
 	private String content;
 
-	@JsonIgnore
 	@ManyToOne
-	@NotNull
+	@Column(nullable = false)
 	private Activity activity;
 
 	@ManyToOne
-	@NotNull
+	@Column(nullable = false)
 	private User author;
 
 	private Comment() {

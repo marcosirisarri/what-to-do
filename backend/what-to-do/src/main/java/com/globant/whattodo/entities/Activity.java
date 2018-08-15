@@ -1,6 +1,6 @@
 package com.globant.whattodo.entities;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -12,8 +12,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.validation.constraints.FutureOrPresent;
-import javax.validation.constraints.NotNull;
 
 @Entity
 public class Activity {
@@ -22,15 +20,14 @@ public class Activity {
 	@GeneratedValue
 	private Long id;
 
-	@NotNull
+	@Column(nullable = false)
 	private String name;
 
-	@NotNull
+	@Column(nullable = false)
 	private String description;
 
-	@NotNull
-	@FutureOrPresent
-	private Date dateAndTime;
+	@Column(nullable = false)
+	private LocalDateTime dateAndTime;
 
 	private Integer maximumParticipants;
 
@@ -38,11 +35,11 @@ public class Activity {
 	private String base64Image;
 
 	@OneToOne
-	@NotNull
+	@Column(nullable = false)
 	private Location location;
 
 	@ManyToOne
-	@NotNull
+	@Column(nullable = false)
 	private User creator;
 
 	@ManyToMany
@@ -54,7 +51,7 @@ public class Activity {
 	private Activity() { // JPA only
 	}
 
-	public Activity(String name, Date dateAndTime) {
+	public Activity(String name, LocalDateTime dateAndTime) {
 		this.name = name;
 		this.dateAndTime = dateAndTime;
 	}
@@ -79,11 +76,11 @@ public class Activity {
 		this.description = description;
 	}
 
-	public Date getDateAndTime() {
+	public LocalDateTime getDateAndTime() {
 		return dateAndTime;
 	}
 
-	public void setDateAndTime(Date dateAndTime) {
+	public void setDateAndTime(LocalDateTime dateAndTime) {
 		this.dateAndTime = dateAndTime;
 	}
 

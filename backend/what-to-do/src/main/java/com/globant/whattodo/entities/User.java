@@ -1,8 +1,8 @@
 package com.globant.whattodo.entities;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,9 +10,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.NotNull;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class User {
@@ -24,23 +21,21 @@ public class User {
 	@Column(unique = true)
 	private String email;
 
-	@JsonIgnore
 	private String password;
 
-	@NotNull
+	@Column(nullable = false)
 	private String firstName;
 
-	@NotNull
+	@Column(nullable = false)
 	private String lastName;
 
-	private Date birthDate;
+	private LocalDate birthDate;
 
 	private String biography;
 
 	@Column(length = Integer.MAX_VALUE)
 	private String base64Image;
 
-	@JsonIgnore
 	@OneToMany(mappedBy = "creator", fetch = FetchType.LAZY)
 	private Collection<Activity> activities = new ArrayList<Activity>();
 
@@ -84,11 +79,11 @@ public class User {
 		this.lastName = lastName;
 	}
 
-	public Date getBirthDate() {
+	public LocalDate getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(Date birthDate) {
+	public void setBirthDate(LocalDate birthDate) {
 		this.birthDate = birthDate;
 	}
 
