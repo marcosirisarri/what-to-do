@@ -34,12 +34,10 @@ public class Activity {
 	@Column(length = Integer.MAX_VALUE)
 	private String base64Image;
 
-	@OneToOne
-	@Column(nullable = false)
+	@OneToOne(optional = false)
 	private Location location;
 
-	@ManyToOne
-	@Column(nullable = false)
+	@ManyToOne(optional = false)
 	private User creator;
 
 	@ManyToMany

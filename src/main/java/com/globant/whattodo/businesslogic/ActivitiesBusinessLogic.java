@@ -1,7 +1,7 @@
 package com.globant.whattodo.businesslogic;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -59,7 +59,7 @@ public class ActivitiesBusinessLogic {
 		Activity originalActivity = this.getById(id);
 		String updatedName = updatedActivity.getName();
 		String updatedDescription = updatedActivity.getDescription();
-		Date updatedDateAndTime = updatedActivity.getDateAndTime();
+		LocalDateTime updatedDateAndTime = updatedActivity.getDateAndTime();
 		Integer updatedMaximumParticipants = updatedActivity.getMaximumParticipants();
 		String updatedBase64Image = updatedActivity.getBase64Image();
 		Location updatedLocation = updatedActivity.getLocation();
@@ -97,7 +97,7 @@ public class ActivitiesBusinessLogic {
 	private void validateActivity(Activity activity) {
 		String name = activity.getName();
 		String description = activity.getDescription();
-		Date dateAndTime = activity.getDateAndTime();
+		LocalDateTime dateAndTime = activity.getDateAndTime();
 		Location location = activity.getLocation();
 		User creator = activity.getCreator();
 
@@ -112,13 +112,13 @@ public class ActivitiesBusinessLogic {
 		validateCreator(creator);
 	}
 
-	private void validateDateAndTime(Date dateAndTime) {
-		Date current = new Date();
+	private void validateDateAndTime(LocalDateTime dateAndTime) {
+		LocalDateTime current = LocalDateTime.now();
 
 		if (dateAndTime == null) {
 			throw new RequiredFieldMissingException("dateAndTime");
 		}
-		if (dateAndTime.before(current)) {
+		if (dateAndTime.isBefore(current)) {
 			throw new InvalidDateException("Must be present or future");
 		}
 	}

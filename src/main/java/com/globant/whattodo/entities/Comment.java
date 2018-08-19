@@ -1,6 +1,5 @@
 package com.globant.whattodo.entities;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,12 +14,10 @@ public class Comment {
 
 	private String content;
 
-	@ManyToOne
-	@Column(nullable = false)
+	@ManyToOne(optional = false)
 	private Activity activity;
 
-	@ManyToOne
-	@Column(nullable = false)
+	@ManyToOne(optional = false)
 	private User author;
 
 	private Comment() {
