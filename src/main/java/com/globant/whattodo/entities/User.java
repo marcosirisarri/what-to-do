@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -38,6 +39,9 @@ public class User {
 
 	@OneToMany(mappedBy = "creator", fetch = FetchType.LAZY)
 	private Collection<Activity> activities = new ArrayList<Activity>();
+
+	@ManyToMany
+	private Collection<Role> roles;
 
 	private User() {
 	} // JPA only
@@ -101,6 +105,14 @@ public class User {
 
 	public void setBase64Image(String base64Image) {
 		this.base64Image = base64Image;
+	}
+
+	public Collection<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Collection<Role> roles) {
+		this.roles = roles;
 	}
 
 	@Override

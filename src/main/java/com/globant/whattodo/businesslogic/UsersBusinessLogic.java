@@ -1,6 +1,7 @@
 package com.globant.whattodo.businesslogic;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,15 +12,18 @@ import com.globant.whattodo.businesslogic.exceptions.RequiredFieldMissingExcepti
 import com.globant.whattodo.businesslogic.exceptions.UserEmailAlreadyRegisteredException;
 import com.globant.whattodo.businesslogic.exceptions.UserNotFoundException;
 import com.globant.whattodo.entities.User;
+import com.globant.whattodo.repository.RolesRepository;
 import com.globant.whattodo.repository.UsersRepository;
 
 @Service
 public class UsersBusinessLogic {
 
+	private final RolesRepository rolesRepository;
 	private final UsersRepository usersRepository;
 
 	@Autowired
-	public UsersBusinessLogic(UsersRepository usersRepo) {
+	public UsersBusinessLogic(RolesRepository rolesRepo, UsersRepository usersRepo) {
+		this.rolesRepository = rolesRepo;
 		this.usersRepository = usersRepo;
 	}
 
@@ -33,6 +37,7 @@ public class UsersBusinessLogic {
 
 	public User addUser(User newUser) {
 		validateUser(newUser);
+		newUser.setRoles(Arrays.asList(rolesRepository.findByName("ROLE_USER").get()));
 		return this.usersRepository.save(newUser);
 	}
 
